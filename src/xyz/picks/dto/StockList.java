@@ -10,6 +10,8 @@ import org.springframework.context.annotation.Scope;
 @Scope("request")
 public class StockList {
 
+	private int stockListId; //unique list id
+	private int authorId; //author's user id
 	private String title;
 	private String description;
 	
@@ -32,6 +34,22 @@ public class StockList {
 	@Override
 	public String toString(){
 		return title;
+	}
+
+	public int getAuthorId() {
+		return authorId;
+	}
+
+	public void setAuthorId(int authorId) {
+		this.authorId = authorId;
+	}
+
+	public int getStockListId() {
+		return stockListId;
+	}
+
+	public void setStockListId(int stockListId) {
+		this.stockListId = stockListId;
 	}
 	
 }

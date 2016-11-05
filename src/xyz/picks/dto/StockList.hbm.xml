@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="xyz.picks.dto.StockList" table="stock_lists" catalog="Picks">
+		<id name="authorId" type="java.lang.Integer">
+			<column name="author_id" />
+		</id>
+		<property name="title" type="string">
+			<column name="title" length="40" not-null="true" unique="false" />
+		</property>
+		<property name="description" type="string">
+			<column name="description" length="255" not-null="false" unique="false" />
+		</property>
+	</class>
+</hibernate-mapping>

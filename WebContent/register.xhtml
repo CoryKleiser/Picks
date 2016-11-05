@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head>
+   <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"/>
+</h:head>
+
+<h:body>
+	<ui:composition template="template.xhtml">
+		<ui:define name="title">Picks Registeration</ui:define>
+		
+		
+		<ui:define name="content">
+			<h1>Create Picks Account</h1>
+				<h:form>
+					<p:growl id="growl" showDetail="true" sticky="false" />
+					<h3>
+						<p:outputLabel for="userEmailInput" value="Email"/>
+					</h3>
+					<p:inputText id="userEmailInput" value="#{user.email}"/>
+					
+					<!-- TODO:: hide password -->
+					<h3>
+						<p:outputLabel for="passwordInput" value="Password"/>
+					</h3>
+					<p:inputText id="passwordInput" value="#{user.password}"/>
+			    	<h3>
+			    		<p:outputLabel for="firstNameInput" value="First Name: "/>
+		    		</h3>
+					<p:inputText id="firstNameInput" value="#{user.firstName}"/>
+					<h3>
+			    		<p:outputLabel for="lastNameInput" value="Last Name: "/>
+					</h3>
+					<p:inputText id="lastNameInput" value="#{user.lastName}"/>
+					
+					<h3>
+			    		<p:outputLabel for="summaryInput" value="Summary: "/>
+			    	</h3>
+		    	    <p:inputTextarea rows="5" cols="30" counter="display" 
+		    	    maxlength="512" counterTemplate="{0} characters remaining." 
+		    	    id="summaryInput" value="#{user.summary}"/>
+		    	    <br/>
+		    	    <h:outputText id="display" />
+
+			    	<h3>
+		    	    	<p:commandButton value="Submit" icon="ui-icon-check" update="growl" action="#{addUser.execute}" />
+	    			</h3>
+	    		</h:form>
+		</ui:define>
+		<ui:define name="bottom"></ui:define>
+	</ui:composition>
+</h:body>
+
+
+</html>

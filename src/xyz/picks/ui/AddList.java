@@ -20,7 +20,7 @@ public class AddList {
 	
 	@Inject
 	private StockList stockList;
-	
+		
 	@Inject
 	private IStockListService stockListService;
 	
@@ -34,22 +34,23 @@ public class AddList {
 		FacesContext currentInstance = FacesContext.getCurrentInstance();
 		if(stockList != null && stockList.getTitle().length() > 0){
 		//:: implement add method from StockListService
-		try{
-			stockListService.add(stockList);
-			logger.info("INFO:: User stock list saved successfully");
-			returnMessage = "success";
-			// what is the message that we want to show?
-			fm = new FacesMessage(FacesMessage.SEVERITY_INFO, "Saved", "Stock List Saved");
-			// display the message
-			currentInstance.addMessage(null, fm);
-		} 
-		catch(Exception e) {
-			returnMessage = "fail";
-			logger.error("ERROR:: User stock list did not save successfully.");
-			logger.error(e);
-			fm = new FacesMessage(FacesMessage.SEVERITY_INFO, "Whoops!", "Something went wrong. Please try again later.");
-			currentInstance.addMessage(null, fm);
-		}
+			try{
+				//TODO:: set stocklist author id to user id
+				stockListService.add(stockList);
+				logger.info("INFO:: User stock list saved successfully");
+				returnMessage = "success";
+				// what is the message that we want to show?
+				fm = new FacesMessage(FacesMessage.SEVERITY_INFO, "Saved", "Stock List Saved");
+				// display the message
+				currentInstance.addMessage(null, fm);
+			} 
+			catch(Exception e) {
+				returnMessage = "fail";
+				logger.error("ERROR:: User stock list did not save successfully.");
+				logger.error(e);
+				fm = new FacesMessage(FacesMessage.SEVERITY_INFO, "Whoops!", "Something went wrong. Please try again later.");
+				currentInstance.addMessage(null, fm);
+			}
 		} else {
 			fm = new FacesMessage(FacesMessage.SEVERITY_INFO, "Uh Oh", "Looks like you forgot the title");
 			currentInstance.addMessage(null, fm);

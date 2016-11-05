@@ -31,7 +31,7 @@ public class TestListDAO extends TestCase{
 	}
 
 	private void givenThatListDAOIsCreated() {
-		listDAO = new UserDAO();
+		listDAO = new ListDAO();
 	}
 	
 	
