@@ -41,9 +41,9 @@
 					<h3>
 			    		<p:outputLabel for="summaryInput" value="Summary: "/>
 			    	</h3>
-		    	    <p:inputTextarea rows="5" cols="30" counter="display" 
+		    	    <p:inputTextarea rows="6" cols="30" counter="display" 
 		    	    maxlength="512" counterTemplate="{0} characters remaining." 
-		    	    id="summaryInput" value="#{user.summary}"/>
+		    	    id="summaryInput" value="#{user.summary}" autoResize="false"/>
 		    	    <br/>
 		    	    <h:outputText id="display" />
 
