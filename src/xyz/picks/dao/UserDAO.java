@@ -1,15 +1,15 @@
 package xyz.picks.dao;
 
+import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import javax.inject.Named;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
 
+import xyz.picks.dto.StockList;
 import xyz.picks.dto.User;
 
 
@@ -22,10 +22,10 @@ import xyz.picks.dto.User;
 @Named
 public class UserDAO implements IUserDAO {
 
-	public Set<User> users;
+	public List<User> allUsers;
 
 	public UserDAO() {
-		users = new HashSet<User>();
+		allUsers = new ArrayList<User>();
 	}
 
 	// TODO:: implement Hibernate
@@ -33,13 +33,17 @@ public class UserDAO implements IUserDAO {
 	public List<User> fetchAllUsers() {
 
 		Session session = HibernateUtil.getSessionFactory().openSession();
-		// create the query
-		Query query = session.createQuery("from User");
+
+		Query query = session.createQuery("FROM User");
+
 		@SuppressWarnings("rawtypes")
 		List list = query.list();
-		List<User> allUsers = Collections.checkedList(list, User.class);
-
-		return list;
+		
+		allUsers = Collections.checkedList(list, User.class);
+		
+		session.close();
+		return allUsers;	
+		
 	}
 
 	@Override
@@ -49,7 +53,7 @@ public class UserDAO implements IUserDAO {
 		session.beginTransaction();
 
 		session.save(user);
-		users.add(user);
+		allUsers.add(user);
 
 		session.getTransaction().commit();
 	}

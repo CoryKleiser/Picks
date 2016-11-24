@@ -17,26 +17,15 @@
 
 		<ui:define name="content">
 			<h1>List Manager</h1>
-			
-
-			
 			<h2>
-				<h:outputLabel value="Add List" />
+				<h:outputLabel value="Current Lists Go Here (editable)" />
+			</h2>
+			<h2>
+				<h:outputLabel value="Edit List" />
 			</h2>
 			<h:form>
 				<p:growl id="growl" showDetail="true" sticky="false" />
-				<h3>
-					<p:outputLabel for="listTitleInput" value="List Title" />
-				</h3>
-				<p:inputText id="listTitleInput"
-					placeholder="Awesome List Name Here" value="#{stockList.title}" />
 
-				<h3>
-					<p:outputLabel for="listDescriptionInput" value="Description" />
-				</h3>
-				<p:inputTextarea rows="6" col="3" id="listDescriptionInput"
-					placeholder="Description Here (Optional)"
-					value="#{stockList.description}" />
 				<h3>
 					<p:commandButton value="Submit" icon="ui-icon-check" update="growl"
 						actionListener="#{addList.execute}" />

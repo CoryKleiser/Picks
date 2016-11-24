@@ -1,12 +1,12 @@
 package xyz.picks.dao;
 
 import java.util.ArrayList;
-import java.util.HashSet;
+import java.util.Collections;
 import java.util.List;
-import java.util.Set;
 
 import javax.inject.Named;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 
 import xyz.picks.dto.StockList;
@@ -14,10 +14,10 @@ import xyz.picks.dto.StockList;
 @Named
 public class ListDAO implements IListDAO {
 	
-	private Set<StockList> allLists;
+	private List<StockList> allLists;
 	
 	public ListDAO() {
-		allLists = new HashSet<StockList>();
+		allLists = new ArrayList<StockList>();
 	}
 
 
@@ -52,7 +52,17 @@ public class ListDAO implements IListDAO {
 	
 	@Override
 	public List<StockList> fetchAll() {
-		return new ArrayList<StockList>(allLists);
+		Session session = HibernateUtil.getSessionFactory().openSession();
+
+		Query query = session.createQuery("FROM StockList");
+
+		@SuppressWarnings("rawtypes")
+		List list = query.list();
+		
+		allLists = Collections.checkedList(list, StockList.class);
+		
+		session.close();
+		return allLists;	
 	}
 
 }

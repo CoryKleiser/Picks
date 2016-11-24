@@ -38,7 +38,7 @@ public class AddList {
 				//TODO:: set stocklist author id to user id
 				stockListService.add(stockList);
 				logger.info("INFO:: User stock list saved successfully");
-				returnMessage = "success";
+				returnMessage = "addlistsuccess";
 				// what is the message that we want to show?
 				fm = new FacesMessage(FacesMessage.SEVERITY_INFO, "Saved", "Stock List Saved");
 				// display the message
