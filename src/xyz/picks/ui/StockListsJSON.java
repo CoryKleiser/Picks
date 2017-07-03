@@ -38,12 +38,16 @@ public class StockListsJSON extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		//get data
-		List<StockList> stockLists = stockListService.showAllLists();
-		
+		//set response header
+		resp.addHeader("Access-Control-Allow-Origin", "*");
+				
 		// write JSON stream
 		resp.setContentType("application/json");
 		PrintWriter writer = resp.getWriter();
+		
+		//get data
+		List<StockList> stockLists = stockListService.showAllLists();
+		
 
 		JsonObjectBuilder rootBuilder = Json.createObjectBuilder();
 		
