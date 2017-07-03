@@ -28,7 +28,7 @@ public class UserDAO implements IUserDAO {
 		allUsers = new ArrayList<User>();
 	}
 
-	// TODO:: implement Hibernate
+	// :: implement Hibernate
 	@Override
 	public List<User> fetchAllUsers() {
 
