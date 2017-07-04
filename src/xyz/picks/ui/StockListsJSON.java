@@ -42,7 +42,7 @@ public class StockListsJSON extends HttpServlet {
 		resp.addHeader("Access-Control-Allow-Origin", "*");
 				
 		// write JSON stream
-		resp.setContentType("application/json");
+		resp.addHeader("Content-Type", "application/json");
 		PrintWriter writer = resp.getWriter();
 		
 		//get data
