@@ -18,6 +18,7 @@ public class User {
 		return userId;
 	}
 	public void setUserId(int userId) {
+		//TODO:: update to reflect the index
 		this.userId = userId;
 	}
 	public String getEmail() {

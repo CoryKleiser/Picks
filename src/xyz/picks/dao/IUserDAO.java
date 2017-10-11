@@ -18,5 +18,12 @@ public interface IUserDAO {
 	 * @param user
 	 */
 	void insert(User user);
+	
+	/**
+	 * fetches user by userId
+	 * @param userId
+	 * @return User object
+	 */
+	User fetch(int userId);
 
 }

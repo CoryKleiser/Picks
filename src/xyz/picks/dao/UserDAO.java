@@ -45,15 +45,36 @@ public class UserDAO implements IUserDAO {
 		return allUsers;	
 		
 	}
+	
+	@Override
+	public User fetch(int userId){
+		//fetch user by userId
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		
+		Query query = session.createQuery("FROM User");
+		
+		@SuppressWarnings("rawtypes")
+		List list = query.list();
+		
+		allUsers = Collections.checkedList(list, User.class);
+		
+		User user = allUsers.get(userId);
+		
+		return user;
+		
+		
+	}
 
 	@Override
 	public void insert(User user) {
 		// save user to database
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		session.beginTransaction();
+		
+		User newUser = user;
 
-		session.save(user);
-		allUsers.add(user);
+		session.save(newUser);
+		allUsers.add(newUser);
 
 		session.getTransaction().commit();
 	}
