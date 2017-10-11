@@ -17,6 +17,18 @@ public class TestListDAO extends TestCase{
 		whenInsertTestList();
 		thenVerifyTestListIsCreated();
 	}
+	
+	@Test
+	public void testFetchAll() throws Exception{
+		givenThatListDAOIsCreated();
+		verifyFetchAll();
+	}
+
+	private void verifyFetchAll() {
+		// TODO Auto-generated method stub
+		List<StockList> lists = listDAO.fetchAll();
+		assertTrue(lists.size()>1);
+	}
 
 	private void thenVerifyTestListIsCreated() {
 		List<StockList> lists = listDAO.fetch("Test");
@@ -24,10 +36,10 @@ public class TestListDAO extends TestCase{
 	}
 
 	private void whenInsertTestList() throws Exception {
-		StockList stockList = new StockList();
-		stockList.setTitle("Test List!");
-		stockList.setDescription("Test Description.");
-		listDAO.insertOrUpdate(stockList);
+		StockList list = new StockList();
+		list.setTitle("Test List!");
+		list.setDescription("Test Description.");
+		listDAO.insertOrUpdate(list);
 	}
 
 	private void givenThatListDAOIsCreated() {
