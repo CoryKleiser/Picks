@@ -68,13 +68,14 @@ public class UserDAO implements IUserDAO {
 	@Override
 	public void insert(User user) {
 		// save user to database
+		User newUser = user;
+		allUsers.add(newUser);
+		
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		session.beginTransaction();
 		
-		User newUser = user;
 
 		session.save(newUser);
-		allUsers.add(newUser);
 
 		session.getTransaction().commit();
 	}
