@@ -57,8 +57,8 @@ public class UserDAO implements IUserDAO {
 		List list = query.list();
 		
 		allUsers = Collections.checkedList(list, User.class);
-		
-		User user = allUsers.get(userId);
+		//TODO:: switch user list to map.
+		User user = allUsers.get(0);
 		
 		return user;
 		

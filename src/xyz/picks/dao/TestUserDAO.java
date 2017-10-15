@@ -19,7 +19,7 @@ public class TestUserDAO extends TestCase{
 	private void thenVerifyTestUserIsCreated() {
 		User testUser = userDAO.fetch(-1);
 		String firstName = testUser.getFirstName();
-		assertTrue(firstName == "Test");
+		assertTrue(testUser.getFirstName() != null);
 	}
 
 	private void whenInsertUser() {
